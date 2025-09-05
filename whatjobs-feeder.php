@@ -1,5 +1,4 @@
 <?php
-<?php
 /**
  * Plugin Name: WhatJobs Feeder
  * Plugin URI: https://github.com/yourname/whatjobs-feeder
