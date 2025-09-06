@@ -26,6 +26,16 @@ $publisher_id = \WhatJobsFeeder\Core::get_option('publisher_id');
                 ?>
             </p>
         </div>
+    <?php else: ?>
+        <div class="notice notice-info">
+            <p>
+                <?php _e('Publisher ID configurado! Você pode criar feeds automáticos agora.', 'whatjobs-feeder'); ?>
+                <button type="button" id="test-api-connection" class="button button-secondary" style="margin-left: 10px;">
+                    <?php _e('Testar API', 'whatjobs-feeder'); ?>
+                </button>
+                <span id="api-test-result"></span>
+            </p>
+        </div>
     <?php endif; ?>
 
     <div class="whatjobs-feeder-stats">
@@ -88,4 +98,26 @@ $publisher_id = \WhatJobsFeeder\Core::get_option('publisher_id');
     color: #dc3232;
     font-weight: bold;
 }
+
+#api-test-result {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+#api-test-result.success {
+    color: #46b450;
+}
+
+#api-test-result.error {
+    color: #dc3232;
+}
+</style>
+
+<script>
+jQuery(document).ready(function($) {
+    $('#test-api-connection').on('click', function() {
+        // Reutilizar a função de teste de conexão do admin.js
+        $('#test-connection').trigger('click');
+    });
+});
 </style>

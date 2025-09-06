@@ -1,0 +1,73 @@
+# Portuguese (Brazil) translations for WhatJobs Feeder
+# Copyright (C) 2024
+# This file is distributed under the same license as the WhatJobs Feeder package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WhatJobs Feeder 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: 2024-01-01 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "WhatJobs Feeder"
+msgstr "WhatJobs Feeder"
+
+msgid "Feeds Automáticos"
+msgstr "Feeds Automáticos"
+
+msgid "Configurações"
+msgstr "Configurações"
+
+msgid "Publisher ID"
+msgstr "Publisher ID"
+
+msgid "Status padrão das vagas"
+msgstr "Status padrão das vagas"
+
+msgid "Publicado"
+msgstr "Publicado"
+
+msgid "Rascunho"
+msgstr "Rascunho"
+
+msgid "Pendente"
+msgstr "Pendente"
+
+msgid "Testar Conexão"
+msgstr "Testar Conexão"
+
+msgid "Conexão bem-sucedida!"
+msgstr "Conexão bem-sucedida!"
+
+msgid "Falha na conexão:"
+msgstr "Falha na conexão:"
+
+msgid "Feed não encontrado."
+msgstr "Feed não encontrado."
+
+msgid "Pelo menos um parâmetro (keyword ou location) é obrigatório."
+msgstr "Pelo menos um parâmetro (keyword ou location) é obrigatório."
+
+msgid "Feed salvo com sucesso!"
+msgstr "Feed salvo com sucesso!"
+
+msgid "Erro ao salvar feed."
+msgstr "Erro ao salvar feed."
+
+msgid "Configurações salvas!"
+msgstr "Configurações salvas!"
+
+msgid "Permissão negada."
+msgstr "Permissão negada."
+
+msgid "ID do feed inválido."
+msgstr "ID do feed inválido."
+
+msgid "Importados: %d, Duplicados: %d, Erros: %d"
+msgstr "Importados: %d, Duplicados: %d, Erros: %d"

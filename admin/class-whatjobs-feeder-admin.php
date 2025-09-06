@@ -162,6 +162,8 @@ class Admin {
      * Feeds list
      */
     private function feeds_list(): void {
+        $this->handle_feed_actions();
+        
         if (isset($_POST['action']) && $_POST['action'] === 'create_feed') {
             $this->save_feed();
         }
@@ -360,5 +362,48 @@ class Admin {
                 $result['errors']
             )
         ]);
+    }
+    
+    /**
+     * Handle feed actions (delete, toggle status)
+     */
+    private function handle_feed_actions(): void {
+        if (!isset($_GET['action']) || !isset($_GET['feed_id'])) {
+            return;
+        }
+        
+        $action = sanitize_text_field($_GET['action']);
+        $feed_id = absint($_GET['feed_id']);
+        
+        if ($action === 'delete') {
+            if (!wp_verify_nonce($_GET['_wpnonce'] ?? '', 'delete_feed_' . $feed_id)) {
+                wp_die(__('Nonce inválido.', 'whatjobs-feeder'));
+            }
+            
+            global $wpdb;
+            $result = $wpdb->delete(
+                $wpdb->prefix . 'whatjobs_feeds',
+                ['id' => $feed_id],
+                ['%d']
+            );
+            
+            if ($result !== false) {
+                add_settings_error(
+                    'whatjobs_feeder',
+                    'feed_deleted',
+                    __('Feed excluído com sucesso!', 'whatjobs-feeder'),
+                    'success'
+                );
+            } else {
+                add_settings_error(
+                    'whatjobs_feeder',
+                    'delete_error',
+                    __('Erro ao excluir feed.', 'whatjobs-feeder')
+                );
+            }
+            
+            wp_redirect(admin_url('admin.php?page=whatjobs-feeder'));
+            exit;
+        }
     }
 }

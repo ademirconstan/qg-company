@@ -1,9 +1,9 @@
 jQuery(document).ready(function($) {
     
     // Test connection button
-    $('#test-connection').on('click', function() {
+    $('#test-connection, #test-api-connection').on('click', function() {
         var $button = $(this);
-        var $status = $('#connection-status');
+        var $status = $(this).attr('id') === 'test-connection' ? $('#connection-status') : $('#api-test-result');
         
         $button.prop('disabled', true).text(whatjobsFeeder.strings.testingConnection);
         $status.removeClass('success error').text('');
@@ -26,7 +26,8 @@ jQuery(document).ready(function($) {
                 $status.addClass('error').text(whatjobsFeeder.strings.connectionFailed + ' Network error');
             },
             complete: function() {
-                $button.prop('disabled', false).text('Testar Conexão');
+                var originalText = $(this).attr('id') === 'test-connection' ? 'Testar Conexão' : 'Testar API';
+                $button.prop('disabled', false).text(originalText);
             }
         });
     });

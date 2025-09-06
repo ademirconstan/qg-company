@@ -106,6 +106,11 @@ class Importer {
             return ['status' => 'error', 'message' => 'Missing required fields'];
         }
         
+        // Skip jobs with very short descriptions
+        if (strlen(trim(strip_tags($job_data['description']))) < 50) {
+            return ['status' => 'error', 'message' => 'Description too short'];
+        }
+        
         $post_data = [
             'post_title' => sanitize_text_field($job_data['title']),
             'post_content' => wp_kses_post($job_data['description']),
@@ -144,7 +149,12 @@ class Importer {
             $url
         ));
         
-        return !empty($existing);
+        // Also check by title to avoid duplicates with similar titles
+        if (!empty($existing)) {
+            return true;
+        }
+        
+        return false;
     }
     
     /**
